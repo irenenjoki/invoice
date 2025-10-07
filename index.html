@@ -1,156 +1,267 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Invoice</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nexus Insurance Invoice</title>
   <style>
     body {
-      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-      margin: 40px auto;
-      max-width: 800px;
-      color: #333;
-      background: #fafafa;
-    }
-    header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      border-bottom: 2px solid #004080;
-      padding-bottom: 10px;
-      margin-bottom: 30px;
-    }
-    header h1 {
-      color: #004080;
-      text-decoration: none;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #90c3fa;
       margin: 0;
+      padding: 0;
+      color: #333;
     }
-    .from-to {
-      display: flex;
-      justify-content: space-between;
-      margin-bottom: 30px;
+    .email-wrapper {
+      max-width: 720px;
+      margin: 30px auto;
+      background: #ffffff;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
     }
-    .from-to .section h2 {
-      margin-bottom: 5px;
-      color: #004080;
+    .header {
+      background: linear-gradient(90deg, #004aad, #90c3fa);
+      color: #8df8f3;
+      text-align: center;
+      padding: 40px 20px 30px;
     }
-    .from-to .section h3 {
-      margin: 3px 0;
-      font-weight: normal;
+    .header img {
+      width: 150px;
+      margin-bottom: 10px;
     }
-    .invoice-meta {
-      text-align: right;
-      margin-bottom: 30px;
+    .header h1 {
+      margin: 10px 0 0;
+      font-size: 28px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-decoration: underline;
     }
-    .invoice-meta h3 {
-      margin: 3px 0;
-      font-weight: normal;
-    }
-    table {
+
+    .hero img {
       width: 100%;
-      border-collapse: collapse;
-      margin-bottom: 30px;
+      height: auto;
+      display: block;
+      background-color: #fa9b7e;
     }
-    table th, table td {
-      border: 1px solid #aaa;
+
+    .content {
+      padding: 30px 40px;
+    }
+    .content h2 {
+      color: #004aad;
+      font-size: 22px;
+      margin-bottom: 10px;
+    }
+    .content p {
+      color: #555;
+      line-height: 1.6;
+      margin-bottom: 16px;
+    }
+
+    .invoice-details {
+      margin: 30px 0;
+      border-collapse: collapse;
+      width: 100%;
+    }
+    .invoice-details th, .invoice-details td {
+      border: 1px solid #6ef5f5;
       padding: 12px;
       text-align: center;
     }
-    table th {
-      background: #e8f0fa;
-      color: #004080;
+    .invoice-details th {
+      background-color: #7eb0fa;
+      color: #004aad;
+      font-weight: 600;
     }
-    table td:first-child {
-      text-align: left;
-    }
+
     .totals {
-      width: 50%;
-      margin-left: auto;
+      text-align: right;
+      margin-top: 20px;
     }
     .totals p {
-      display: flex;
-      justify-content: space-between;
       margin: 6px 0;
+      font-weight: 500;
     }
-    .totals .grand-total {
+    .totals .grand {
+      font-weight: 700;
+      font-size: 1.1em;
+      color: #007bff;
+    }
+
+    .insurance-info {
+      background: #eef6ff;
+      padding: 20px;
+      border-left: 5px solid #007bff;
+      margin-top: 40px;
+      border-radius: 6px;
+    }
+    .insurance-info h3 {
+      color: #004aad;
+      margin-top: 0;
+    }
+
+    .promo {
+      margin-top: 40px;
+      background: linear-gradient(90deg, #2181ff, #92c2f7);
+      color: antiquewhite;
+      padding: 30px;
+      border-radius: 10px;
+      text-align: center;
+    }
+    .promo h2 {
+      margin-bottom: 10px;
+      font-size: 24px;
+    }
+    .promo p {
+      font-size: 16px;
+      margin-bottom: 20px;
+      color: rgb(7, 7, 7);
+    }
+    .promo a {
+      display: inline-block;
+      background: #fff;
+      color: #004aad;
+      text-decoration: none;
+      font-weight: 600;
+      padding: 10px 20px;
+      border-radius: 5px;
+    }
+
+    .gallery {
+      display: flex;
+      gap: 10px;
+      margin-top: 20px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .gallery img {
+      width: 30%;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    footer {
+      background: #f0f6ff;
+      padding: 20px;
+      text-align: center;
+      color: #555;
+      font-size: 0.9em;
+    }
+     .totals .grand-total {
       border-top: 3px double #000;
       padding-top: 10px;
       font-weight: bold;
       font-size: 1.1em;
     }
+    
     .remarks {
       text-align: center;
       margin-top: 50px;
       font-style: italic;
       color: #555;
     }
-    footer {
-      text-align: center;
-      margin-top: 60px;
-      font-size: 0.9em;
-      color: #777;
-      border-top: 1px solid #ccc;
-      padding-top: 10px;
+     .invoice-info {
+      display: flex;
+      justify-content: space-between;
+      padding: 20px 40px;
+      background-color: #eef6ff;
+      border-bottom: 2px solid #007bff;
+    }
+    .invoice-info div {
+      width: 45%;
+    }
+    .invoice-info h3 {
+      color: #004aad;
+      margin-bottom: 8px;
+    }
+    .invoice-info p {
+      margin: 4px 0;
+      color: #444;
     }
   </style>
 </head>
 <body>
-  <header>
-    <h1 style="text-align: center;">INVOICE</h1>
-    
-  </header>
-
-  <div class="from-to">
-    <div class="section">
-      <h2>Bill From</h2>
-      <h3>Nexus</h3>
-      <h3>Email: info@nexus.com</h3>
+  <div class="email-wrapper">
+    <div class="header">
+      <img src="nexus-removebg-preview.png" alt="Nexus Insurance Logo" />
+      <h1>Nexus Insurance Invoice</h1>
     </div>
-    <div class="section" style="text-align: right;">
-      <h2>Bill To</h2>
-      <h3>Steven</h3>
-      <h3>Emma</h3>
+
+    <div class="hero">
+      <img src="Screenshot (67).png" alt="Insurance Hero" />
     </div>
-  </div>
 
-  <div class="invoice-meta">
-    <h3>Ref: —</h3>
-    <h3>Date: 10/10/2025</h3>
-  </div>
+    <div class="content">
+      <div class="invoice-info">
+      <div>
+        <h3>Bill From</h3>
+        <p><strong>Nexus Insurance Ltd</strong></p>
+        <p>Email: info@nexus.com</p>
+        
+      </div>
+      <div style="text-align:right;">
+        <h3>Bill To</h3>
+        <p><strong>Steven: <br>Emma:</strong></p>
+        <p>Ref: </p>
+        <p>Date: 10/10/2025</p>
+      </div>
+    </div>
+      <table class="invoice-details">
+        <thead>
+          <tr>
+            <th>Description</th>
+            <th>Rate</th>
+            <th>Qty</th>
+            <th>Amount</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Rotation</td>
+            <td>5000</td>
+            <td>2</td>
+            <td>10,000</td>
+          </tr>
+         
+        </tbody>
+      </table>
 
-  <table>
-    <thead>
-      <tr>
-        <th>Description</th>
-        <th>Rate</th>
-        <th>Qty</th>
-        <th>Amount</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>Rotation</td>
-        <td>5,000</td>
-        <td>2</td>
-        <td>10,000</td>
-      </tr>
-    </tbody>
-  </table>
-
-  <div class="totals">
+       <div class="totals">
     <p><span>Subtotal:</span> <span>10,000</span></p>
     <p><span>abc Tax:</span> <span>20,000</span></p>
     <p><span>CED:</span> <span>5,000</span></p>
     <p class="grand-total"><span>Total:</span> <span>35,000</span></p>
   </div>
 
-  <div class="remarks">
+  
+
+      <div class="insurance-info">
+        <h3>Your Policy at a Glance</h3>
+        <p> Nexus is fast, free, and there's no obligation. We just take the hassle out of finding and calling multiple insurance companies or agents whose quotes are less likely to provide you the best rates. We do the research on the insurance companies, match you with insurance providers who 
+          offer what you need and you get great insurance rate quotes to compare, and eventually take cover.</p>
+      </div>
+
+      <div class="promo">
+        <h2>Why Choose Nexus Insurance?</h2>
+        <p>At Nexus, we make insurance simple, affordable, and reliable. Protect what matters most — your family, your car, and your health — with confidence backed by our award-winning customer support.</p>
+        <a href="https://nexus.ke/">Discover More Plans</a>
+      </div>
+
+      <div class="gallery">
+        <img src="https://img.freepik.com/free-photo/car-insurance-illustration_53876-138085.jpg" alt="Car Insurance" />
+        <img src="https://img.freepik.com/free-photo/healthcare-insurance-concept_53876-138087.jpg" alt="Health Insurance" />
+        <img src="https://img.freepik.com/free-photo/life-insurance-family-protection-concept_53876-138081.jpg" alt="Life Insurance" />
+      </div>
+    </div>
+
+    <footer>
+      <div class="remarks">
     <h2>Remarks: </h2>
   </div>
-
-  <footer>
-    Thank you for your business!<br>
-    This is a system-generated invoice.
-  </footer>
+      © 2025 Nexus Insurance. All rights reserved. <br />
+      This invoice was generated automatically. For assistance, contact <a href="mailto:support@nexusinsurance.com">support@nexusinsurance.com</a>.
+    </footer>
+  </div>
 </body>
 </html>
